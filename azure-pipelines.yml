@@ -19,7 +19,7 @@ steps:
     resourceGroupName: 'test'
     location: 'West Europe'
     templateLocation: 'Linked artifact'
-    csmFile: '$(System.ArtifactsDirectory)/appPlans.json'
-    csmParametersFile: '$(System.ArtifactsDirectory)/WebApp.tst.parameters.json'
+    csmFile: '$(Build.SourcesDirectory)\appPlans.json'
+    csmParametersFile: '$(Build.SourcesDirectory)\WebApp.tst.parameters.json'
     deploymentMode: 'Incremental'
 
