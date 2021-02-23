@@ -1,0 +1,123 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    
+    "parameters": {
+        "Resources": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "shared": "[parameters('Resources').shared]",
+        "webApps": "[parameters('Resources').dedicated.webApps]"
+    },
+    "resources": [
+        {
+            "copy": {
+                "name": "copyEndpoints",
+                "count": "[length(variables('webApps'))]"
+            },
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-11-01",
+            "name": "[variables('webApps')[copyIndex()].name]",
+            "location": "[variables('shared').location.name]",
+            "kind": "[variables('webApps')[copyIndex()].kind]",
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(variables('webApps')[copyIndex()].name, '.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(variables('webApps')[copyIndex()].name, '.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[variables('webApps')[copyIndex()].plan]",
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "defaultDocuments": [
+                        "Default.htm",
+                        "Default.html",
+                        "Default.asp",
+                        "index.htm",
+                        "index.html",
+                        "iisstart.htm",
+                        "default.aspx",
+                        "index.php",
+                        "hostingstart.html"
+                    ],
+                    "netFrameworkVersion": "v4.0",
+                    "requestTracingEnabled": false,
+                    "remoteDebuggingEnabled": false,
+                    "httpLoggingEnabled": false,
+                    "logsDirectorySizeLimit": 35,
+                    "detailedErrorLoggingEnabled": false,
+                    "publishingUsername": "[concat('$', variables('webApps')[copyIndex()].name)]",
+                    "azureStorageAccounts": {},
+                    "scmType": "None",
+                    "use32BitWorkerProcess": true,
+                    "webSocketsEnabled": false,
+                    "alwaysOn": false,
+                    "managedPipelineMode": "Integrated",
+                    "virtualApplications": [
+                        {
+                            "virtualPath": "/",
+                            "physicalPath": "site\\wwwroot",
+                            "preloadEnabled": false
+                        }
+                    ],
+                    "loadBalancing": "LeastRequests",
+                    "experiments": {
+                        "rampUpRules": []
+                    },
+                    "autoHealEnabled": false,
+                    "localMySqlEnabled": false,
+                    "ipSecurityRestrictions": [
+                        {
+                            "ipAddress": "Any",
+                            "action": "Allow",
+                            "priority": 1,
+                            "name": "Allow all",
+                            "description": "Allow all access"
+                        }
+                    ],
+                    "scmIpSecurityRestrictions": [
+                        {
+                            "ipAddress": "Any",
+                            "action": "Allow",
+                            "priority": 1,
+                            "name": "Allow all",
+                            "description": "Allow all access"
+                        }
+                    ],
+                    "appSettings": [
+                        {
+                        "name": "SlotName",
+                        "value": "[variables('webApps')[copyIndex()].slot]"
+                        }
+                    ],
+                    "scmIpSecurityRestrictionsUseMain": false,
+                    "http20Enabled": false,
+                    "minTlsVersion": "1.2",
+                    "ftpsState": "AllAllowed",
+                    "reservedInstanceCount": 0
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "hostNamesDisabled": false,
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": false,
+                "redundancyMode": "None"
+            }
+        }
+    ]
+}

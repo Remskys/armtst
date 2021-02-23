@@ -1,0 +1,49 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Resources": {
+            "value": {
+                "shared": {
+                    "subscription": {
+                            "id": "9fcb58de-d55d-4745-a0a1-5fe261372c44"
+                    },
+                    "resourceGroup": {
+                            "name": "test"
+                    },
+                    "location": {
+                        "name": "West Europe"
+                    }
+                },
+                "dedicated": {
+                    "appPlans": [
+                        {
+                            "name": "srvplan02",
+                            "skuname": "S1",
+                            "tier": "Standard",
+                            "size": "S1",
+                            "family": "S",
+                            "kind": "app"
+                        }
+                    ],
+                    "webApps": [
+                        {
+                            "name": "apptst01",
+                            "plan": "srvplan02",
+                            "slot": "production",
+                            "kind": "app"
+                        }
+                    ],
+                    "webSlots": [
+                        {
+                            "name": "apptst01",
+                            "slot": "qa",
+                            "plan": "srvplan02",
+                            "kind": "app"
+                        }
+                    ]
+                }
+            }
+        }
+    } 
+}

@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Resources": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "shared": "[parameters('Resources').shared]",
+        "appPlans": "[parameters('Resources').dedicated.appPlans]"
+    },
+    "resources": [
+        {
+            "copy": {
+                "name": "copyEndpoints",
+                "count": "[length(variables('appPlans'))]"
+            },
+
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
+            "name": "[variables('appPlans')[copyIndex()].name]",
+            "location": "[variables('shared').location.name]",
+            "sku": {
+                "name": "[variables('appPlans')[copyIndex()].skuname]",
+                "tier": "[variables('appPlans')[copyIndex()].tier]",
+                "size": "[variables('appPlans')[copyIndex()].size]",
+                "family": "[variables('appPlans')[copyIndex()].family]"
+            },
+            "kind": "[variables('appPlans')[copyIndex()].kind]",
+            "properties": {
+                "perSiteScaling": false,
+                "maximumElasticWorkerCount": 1,
+                "isSpot": false,
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0
+            }
+        }
+    ]
+}
