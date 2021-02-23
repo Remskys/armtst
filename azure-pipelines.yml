@@ -1,0 +1,31 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: DownloadGitHubRelease@0
+  inputs:
+    connection: 'Remskys'
+    userRepository: 'Remskys/armtst'
+    defaultVersionType: 'latest'
+    downloadPath: '$(System.ArtifactsDirectory)'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Free Trial(4f8a172d-4607-4dbb-b7d7-427f169b13a1)'
+    subscriptionId: '4f8a172d-4607-4dbb-b7d7-427f169b13a1'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'test'
+    location: 'West Europe'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.ArtifactsDirectory)/appPlans.json'
+    csmParametersFile: '$(System.ArtifactsDirectory)/WebApp.tst.parameters.json'
+    deploymentMode: 'Incremental'
+
