@@ -19,7 +19,7 @@ steps:
     location: 'West Europe'
     templateLocation: 'Linked artifact'
     csmFile: '$(Agent.BuildDirectory)/s/servicePlans.json'
-    csmParametersFile: '$(Agent.BuildDirectory)/s/$(int.param)'
+    csmParametersFile: '$(Agent.BuildDirectory)/s/$(param)'
     deploymentMode: 'Incremental'
 
 - task: AzureResourceManagerTemplateDeployment@3
@@ -33,7 +33,7 @@ steps:
     location: 'West Europe'
     templateLocation: 'Linked artifact'
     csmFile: '$(Agent.BuildDirectory)/s/webApps.json'
-    csmParametersFile: '$(Agent.BuildDirectory)/s/$(int.param)'
+    csmParametersFile: '$(Agent.BuildDirectory)/s/$(param)'
     deploymentMode: 'Incremental'
 
 - task: AzureResourceManagerTemplateDeployment@3
@@ -47,6 +47,6 @@ steps:
     location: 'West Europe'
     templateLocation: 'Linked artifact'
     csmFile: '$(Agent.BuildDirectory)/s/slots.json'
-    csmParametersFile: '$(Agent.BuildDirectory)/s/$(int.param)'
+    csmParametersFile: '$(Agent.BuildDirectory)/s/$(param)'
     deploymentMode: 'Incremental'
 
