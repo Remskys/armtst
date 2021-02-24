@@ -28,7 +28,7 @@
                     ],
                     "webApps": [
                         {
-                            "name": "apptst01",
+                            "name": "apptst03",
                             "plan": "srvplan02",
                             "slot": "production",
                             "kind": "app"
@@ -36,7 +36,7 @@
                     ],
                     "webSlots": [
                         {
-                            "name": "apptst01",
+                            "name": "apptst03",
                             "slot": "qa",
                             "plan": "srvplan02",
                             "kind": "app"
