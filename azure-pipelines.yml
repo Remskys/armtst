@@ -20,7 +20,7 @@ steps:
     resourceGroupName: 'test'
     location: 'West Europe'
     templateLocation: 'Linked artifact'
-    csmFile: '$(Agent.BuildDirectory)/s/appPlans.json'
+    csmFile: '$(Agent.BuildDirectory)/s/servicePlans.json'
     csmParametersFile: '$(Agent.BuildDirectory)/s/$(int.param)'
     deploymentMode: 'Incremental'
 
@@ -48,7 +48,7 @@ steps:
     resourceGroupName: 'test'
     location: 'West Europe'
     templateLocation: 'Linked artifact'
-    csmFile: '$(Agent.BuildDirectory)/s/webAppSlots.json'
+    csmFile: '$(Agent.BuildDirectory)/s/slots.json'
     csmParametersFile: '$(Agent.BuildDirectory)/s/$(int.param)'
     deploymentMode: 'Incremental'
 
