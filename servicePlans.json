@@ -8,26 +8,26 @@
     },
     "variables": {
         "shared": "[parameters('Resources').shared]",
-        "appPlans": "[parameters('Resources').dedicated.appPlans]"
+        "servicePlans": "[parameters('Resources').dedicated.servicePlans]"
     },
     "resources": [
         {
             "copy": {
                 "name": "copyEndpoints",
-                "count": "[length(variables('appPlans'))]"
+                "count": "[length(variables('servicePlans'))]"
             },
 
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2018-02-01",
-            "name": "[variables('appPlans')[copyIndex()].name]",
+            "name": "[variables('servicePlans')[copyIndex()].name]",
             "location": "[variables('shared').location.name]",
             "sku": {
-                "name": "[variables('appPlans')[copyIndex()].skuname]",
-                "tier": "[variables('appPlans')[copyIndex()].tier]",
-                "size": "[variables('appPlans')[copyIndex()].size]",
-                "family": "[variables('appPlans')[copyIndex()].family]"
+                "name": "[variables('servicePlans')[copyIndex()].skuname]",
+                "tier": "[variables('servicePlans')[copyIndex()].tier]",
+                "size": "[variables('servicePlans')[copyIndex()].size]",
+                "family": "[variables('servicePlans')[copyIndex()].family]"
             },
-            "kind": "[variables('appPlans')[copyIndex()].kind]",
+            "kind": "[variables('servicePlans')[copyIndex()].kind]",
             "properties": {
                 "perSiteScaling": false,
                 "maximumElasticWorkerCount": 1,

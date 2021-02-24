@@ -16,9 +16,9 @@
                     }
                 },
                 "dedicated": {
-                    "appPlans": [
+                    "servicePlans": [
                         {
-                            "name": "srvplan02",
+                            "name": "srvplan01",
                             "skuname": "S1",
                             "tier": "Standard",
                             "size": "S1",
@@ -28,17 +28,17 @@
                     ],
                     "webApps": [
                         {
-                            "name": "apptst03",
-                            "plan": "srvplan02",
+                            "name": "apptst01",
+                            "plan": "srvplan01",
                             "slot": "production",
                             "kind": "app"
                         }
                     ],
                     "webSlots": [
                         {
-                            "name": "apptst03",
+                            "name": "apptst01",
                             "slot": "qa",
-                            "plan": "srvplan02",
+                            "plan": "srvplan01",
                             "kind": "app"
                         }
                     ]
