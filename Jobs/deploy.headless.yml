@@ -6,7 +6,7 @@ parameters:
   ParameterFile:
 
 steps:
-- template: $(Build.SourcesDirectory)/Tasks/deploy.arm.yml
+- template: ../Tasks/deploy.arm.yml
   parameters:
     ResourceGroupName: ${{ parameters.ResourceGroupName }}
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
@@ -15,7 +15,7 @@ steps:
     Template: $(Build.SourcesDirectory)\servicePlan.json
     ParameterFile: ${{ parameters.ParameterFile }}
 
-- template: $(Build.SourcesDirectory)/Tasks/deploy.arm.yml
+- template: ../Tasks/deploy.arm.yml
   parameters:
     ResourceGroupName: ${{ parameters.ResourceGroupName }}
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
@@ -24,7 +24,7 @@ steps:
     Template: $(Build.SourcesDirectory)\webApps.json
     ParameterFile: ${{ parameters.ParameterFile }}
 
-- template: $(Build.SourcesDirectory)/Tasks/deploy.arm.yml
+- template: ../Tasks/deploy.arm.yml
   parameters:
     ResourceGroupName: ${{ parameters.ResourceGroupName }}
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}

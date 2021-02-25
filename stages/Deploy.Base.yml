@@ -16,7 +16,7 @@ jobs:
     runOnce:
       deploy:
         steps:
-        - template: $(Build.SourcesDirectory)/Jobs/deploy.headless.yml
+        - template: ../Jobs/deploy.headless.yml
           parameters:
             ResourceGroupName: ${{ parameters.ResourceGroupName }}
             AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
