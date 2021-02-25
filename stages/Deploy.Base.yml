@@ -10,7 +10,7 @@ jobs:
 - deployment: Deploy_Headless
   displayName: 'Deploy Headless'
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'windows-latest'
   environment: ${{ parameters.EnvironmentName }}
   strategy:
     runOnce:
