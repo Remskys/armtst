@@ -5,7 +5,7 @@ trigger:
 - master
 
 variables:
-  armpath: $(System.DefaultWorkingDirectory)
+  armpath: $(Build.Repository.LocalPath)
 
 stages:
 
