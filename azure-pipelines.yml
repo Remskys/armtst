@@ -4,6 +4,9 @@ name: Pipeline for Headless01
 trigger:
 - master
 
+variables:
+  armpath: $(Pipeline.Workspace)
+
 stages:
 
 # INT
