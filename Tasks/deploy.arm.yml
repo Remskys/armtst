@@ -7,6 +7,10 @@ parameters:
     ParameterFile:
 
 steps:    
+- script: echo ${{ parameters.Template }}
+- script: echo ${{ parameters.ParameterFile }}
+- script: echo $(Build.SourcesDirectory)
+
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: Create ServicePlans
   inputs:
