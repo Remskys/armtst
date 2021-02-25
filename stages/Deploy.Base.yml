@@ -16,6 +16,7 @@ jobs:
     runOnce:
       deploy:
         steps:
+        - checkout: self
         - template: ../Jobs/deploy.headless.yml
           parameters:
             ResourceGroupName: ${{ parameters.ResourceGroupName }}

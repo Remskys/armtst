@@ -9,5 +9,4 @@ stages:
 # INT
 - stage: TST_Deploy
   jobs:
-  - checkout: self
   - template: stages/Deploy.TST.yml
