@@ -7,13 +7,9 @@ parameters:
     ParameterFile:
 
 steps:    
-- script: echo ${{ parameters.Template }}
-- script: echo ${{ parameters.ParameterFile }}
-- script: echo $(Build.SourcesDirectory)
-- script: ls $(Build.SourcesDirectory)
 
 - task: AzureResourceManagerTemplateDeployment@3
-  displayName: Create ServicePlans
+  displayName: Deploy ${{ parameters.Template }}
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: ${{ parameters.AzureServiceConnection }}
