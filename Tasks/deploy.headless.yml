@@ -6,6 +6,10 @@ parameters:
     ParameterFile:
 
 steps:    
+-task:
+  - script: echo $(armpath)
+  - script: echo ${{ parameters.ParameterFile }}
+
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: Create ServicePlans
   inputs:
