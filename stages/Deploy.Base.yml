@@ -1,0 +1,26 @@
+parameters:
+    EnvironmentName:
+    ResourceGroupName:
+    AzureServiceConnection: 
+    SubscriptionId: 
+    Location:
+    ParameterFile:
+
+jobs:
+- deployment: Deploy_Headless
+  displayName: 'Deploy Headless'
+  pool:
+    vmImage: 'ubuntu-latest'
+  environment: ${{ parameters.EnvironmentName }}
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - download: none
+        - template: ../Jobs/deploy.headless.yml
+          parameters:
+            ResourceGroupName: ${{ parameters.ResourceGroupName }}
+            AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
+            SubscriptionId: ${{ parameters.SubscriptionId }}
+            Location: ${{ parameters.Location }}
+            ParameterFile: ${{ parameters.ParameterFile }}

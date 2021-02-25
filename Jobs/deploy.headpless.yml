@@ -1,0 +1,15 @@
+parameters:
+  ResourceGroupName:
+  AzureServiceConnection: 
+  SubscriptionId: 
+  Location:
+  ParameterFile:
+
+steps:
+- template: ../Tasks/deploy.headless.yml
+  parameters:
+    ResourceGroupName: ${{ parameters.ResourceGroupName }}
+    AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
+    SubscriptionId: ${{ parameters.SubscriptionId }}
+    Location: ${{ parameters.Location }}
+    ParameterFile: ${{ parameters.ParameterFile }}

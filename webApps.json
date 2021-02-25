@@ -1,7 +1,7 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    
+
     "parameters": {
         "Resources": {
             "type": "object"
@@ -22,39 +22,17 @@
             "name": "[variables('webApps')[copyIndex()].name]",
             "location": "[variables('shared').location.name]",
             "properties": {
-                "enabled": true,
-                "hostNameSslStates": [
-                    {
-                        "name": "[concat(variables('webApps')[copyIndex()].name, '.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "hostType": "Standard"
-                    },
-                    {
-                        "name": "[concat(variables('webApps')[copyIndex()].name, '.scm.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "hostType": "Repository"
-                    }
-                ],
                 "serverFarmId": "[variables('webApps')[copyIndex()].plan]",
-                "reserved": false,
-                "isXenon": false,
-                "hyperV": false,
                 "siteConfig": {
                     "appSettings": [
                         {
-                        "name": "SlotName",
-                        "value": "[variables('webApps')[copyIndex()].slot]"
+                            "name": "SlotName",
+                            "value": "[variables('webApps')[copyIndex()].slot]"
                         }
                     ]
                 },
-                "scmSiteAlsoStopped": false,
-                "clientAffinityEnabled": true,
-                "clientCertEnabled": false,
-                "hostNamesDisabled": false,
-                "containerSize": 0,
-                "dailyMemoryTimeQuota": 0,
-                "httpsOnly": false,
-                "redundancyMode": "None"
+                "clientAffinityEnabled": false,
+                "httpsOnly": true
             }
         }
     ]

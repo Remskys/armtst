@@ -1,0 +1,49 @@
+parameters:
+    ResourceGroupName:
+    AzureServiceConnection: 
+    SubscriptionId: 
+    Location:
+    ParameterFile:
+
+steps:    
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Create ServicePlan
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: ${{ parameters.AzureServiceConnection }}
+    subscriptionId: ${{ parameters.SubscriptionId }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: ${{ parameters.ResourceGroupName }}
+    location: ${{ parameters.Location }}
+    templateLocation: 'Linked artifact'
+    csmFile: '$(Agent.BuildDirectory)/s/servicePlans.json'
+    csmParametersFile: '$(Agent.BuildDirectory)/s/${{ parameters.ParameterFile }}'
+    deploymentMode: 'Incremental'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Create WebApps
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: ${{ parameters.AzureServiceConnection }}
+    subscriptionId: ${{ parameters.SubscriptionId }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: ${{ parameters.ResourceGroupName }}
+    location:  ${{ parameters.Location }}
+    templateLocation: ${{ parameters.Location }}
+    csmFile: '$(Agent.BuildDirectory)/s/webApps.json'
+    csmParametersFile: '$(Agent.BuildDirectory)/s/${{ parameters.ParameterFile }}'
+    deploymentMode: 'Incremental'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Create WebApps Slot
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: ${{ parameters.AzureServiceConnection }}
+    subscriptionId: ${{ parameters.SubscriptionId }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: ${{ parameters.ResourceGroupName }}
+    location:  ${{ parameters.Location }}
+    templateLocation: 'Linked artifact'
+    csmFile: '$(Agent.BuildDirectory)/s/slots.json'
+    csmParametersFile: '$(Agent.BuildDirectory)/s/${{ parameters.ParameterFile }}'
+    deploymentMode: 'Incremental'

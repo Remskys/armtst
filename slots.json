@@ -11,7 +11,7 @@
         "webSlots": "[parameters('Resources').dedicated.webSlots]"
     },
     "resources": [
-         {
+        {
             "copy": {
                 "name": "copySlots",
                 "count": "[length(variables('webSlots'))]"
@@ -21,39 +21,17 @@
             "name": "[concat(variables('webSlots')[copyIndex()].name, '/', variables('webSlots')[copyIndex()].slot)]",
             "location": "[variables('shared').location.name]",
             "properties": {
-                "enabled": true,
-                "hostNameSslStates": [
-                    {
-                        "name": "[concat(variables('webSlots')[copyIndex()].name, '-', variables('webSlots')[copyIndex()].slot, '.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "hostType": "Standard"
-                    },
-                    {
-                        "name": "[concat(variables('webSlots')[copyIndex()].name, '-', variables('webSlots')[copyIndex()].slot, '.scm.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "hostType": "Repository"
-                    }
-                ],
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('webSlots')[copyIndex()].plan)]",
-                "reserved": false,
-                "isXenon": false,
-                "hyperV": false,
-                "scmSiteAlsoStopped": false,
-                "clientAffinityEnabled": true,
-                "clientCertEnabled": false,
-                "hostNamesDisabled": false,
-                "containerSize": 0,
-                "dailyMemoryTimeQuota": 0,
-                "httpsOnly": false,
-                "redundancyMode": "None",
+                "clientAffinityEnabled": false,
+                "httpsOnly": true,
                 "siteConfig": {
                     "appSettings": [
                         {
-                        "name": "SlotName",
-                        "value": "[variables('webSlots')[copyIndex()].slot]"
+                            "name": "SlotName",
+                            "value": "[variables('webSlots')[copyIndex()].slot]"
                         }
                     ]
-                }    
+                }
             }
         }
     ]
