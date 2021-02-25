@@ -12,7 +12,7 @@ steps:
     script: |
               Write-Host $(armpath)
               write-host ${{ parameters.ParameterFile }}
-              cd $(armpath) | ls
+              ls -verbose
               
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: Create ServicePlans
