@@ -22,24 +22,21 @@
                             "skuname": "S1",
                             "tier": "Standard",
                             "size": "S1",
-                            "family": "S",
-                            "kind": "app"
+                            "family": "S"
                         }
                     ],
                     "webApps": [
                         {
                             "name": "apptst01",
                             "plan": "srvplan01",
-                            "slot": "production",
-                            "kind": "app"
+                            "slot": "production"
                         }
                     ],
                     "webSlots": [
                         {
                             "name": "apptst01",
                             "slot": "qa",
-                            "plan": "srvplan01",
-                            "kind": "app"
+                            "plan": "srvplan01"
                         }
                     ]
                 }

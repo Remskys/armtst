@@ -20,7 +20,6 @@
             "apiVersion": "2018-11-01",
             "name": "[concat(variables('webSlots')[copyIndex()].name, '/', variables('webSlots')[copyIndex()].slot)]",
             "location": "[variables('shared').location.name]",
-            "kind": "[variables('webSlots')[copyIndex()].kind]",
             "properties": {
                 "enabled": true,
                 "hostNameSslStates": [
@@ -48,68 +47,6 @@
                 "httpsOnly": false,
                 "redundancyMode": "None",
                 "siteConfig": {
-                    "numberOfWorkers": 1,
-                    "defaultDocuments": [
-                        "Default.htm",
-                        "Default.html",
-                        "Default.asp",
-                        "index.htm",
-                        "index.html",
-                        "iisstart.htm",
-                        "default.aspx",
-                        "index.php",
-                        "hostingstart.html"
-                    ],
-                    "netFrameworkVersion": "v4.0",
-                    "requestTracingEnabled": false,
-                    "remoteDebuggingEnabled": false,
-                    "remoteDebuggingVersion": "VS2019",
-                    "httpLoggingEnabled": false,
-                    "logsDirectorySizeLimit": 35,
-                    "detailedErrorLoggingEnabled": false,
-                    "publishingUsername": "[concat('$', variables('webSlots')[copyIndex()].name,'__', variables('webSlots')[copyIndex()].slot)]",
-                    "azureStorageAccounts": {},
-                    "scmType": "None",
-                    "use32BitWorkerProcess": true,
-                    "webSocketsEnabled": false,
-                    "alwaysOn": true,
-                    "managedPipelineMode": "Integrated",
-                    "virtualApplications": [
-                        {
-                            "virtualPath": "/",
-                            "physicalPath": "site\\wwwroot",
-                            "preloadEnabled": true
-                        }
-                    ],
-                    "loadBalancing": "LeastRequests",
-                    "experiments": {
-                        "rampUpRules": []
-                    },
-                    "autoHealEnabled": false,
-                    "localMySqlEnabled": false,
-                    "ipSecurityRestrictions": [
-                        {
-                            "ipAddress": "Any",
-                            "action": "Allow",
-                            "priority": 1,
-                            "name": "Allow all",
-                            "description": "Allow all access"
-                        }
-                    ],
-                    "scmIpSecurityRestrictions": [
-                        {
-                            "ipAddress": "Any",
-                            "action": "Allow",
-                            "priority": 1,
-                            "name": "Allow all",
-                            "description": "Allow all access"
-                        }
-                    ],
-                    "scmIpSecurityRestrictionsUseMain": false,
-                    "http20Enabled": false,
-                    "minTlsVersion": "1.2",
-                    "ftpsState": "AllAllowed",
-                    "reservedInstanceCount": 0,
                     "appSettings": [
                         {
                         "name": "SlotName",

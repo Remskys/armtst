@@ -27,7 +27,6 @@
                 "size": "[variables('servicePlans')[copyIndex()].size]",
                 "family": "[variables('servicePlans')[copyIndex()].family]"
             },
-            "kind": "[variables('servicePlans')[copyIndex()].kind]",
             "properties": {
                 "perSiteScaling": false,
                 "maximumElasticWorkerCount": 1,

@@ -14,14 +14,13 @@
     "resources": [
         {
             "copy": {
-                "name": "copyEndpoints",
+                "name": "copyWebApps",
                 "count": "[length(variables('webApps'))]"
             },
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
             "name": "[variables('webApps')[copyIndex()].name]",
             "location": "[variables('shared').location.name]",
-            "kind": "[variables('webApps')[copyIndex()].kind]",
             "properties": {
                 "enabled": true,
                 "hostNameSslStates": [
@@ -97,17 +96,17 @@
                             "description": "Allow all access"
                         }
                     ],
+                    "scmIpSecurityRestrictionsUseMain": false,
+                    "http20Enabled": false,
+                    "minTlsVersion": "1.2",
+                    "ftpsState": "AllAllowed",
+                    "reservedInstanceCount": 0,
                     "appSettings": [
                         {
                         "name": "SlotName",
                         "value": "[variables('webApps')[copyIndex()].slot]"
                         }
-                    ],
-                    "scmIpSecurityRestrictionsUseMain": false,
-                    "http20Enabled": false,
-                    "minTlsVersion": "1.2",
-                    "ftpsState": "AllAllowed",
-                    "reservedInstanceCount": 0
+                    ]
                 },
                 "scmSiteAlsoStopped": false,
                 "clientAffinityEnabled": true,

@@ -1,0 +1,10 @@
+jobs:
+- template: ./Deploy.Base.yml
+  parameters:
+    EnvironmentName: 'TST'
+    ResourceGroupName: 'tst'
+    AzureServiceConnection: 'RMS connection'
+    SubscriptionId: '4f8a172d-4607-4dbb-b7d7-427f169b13a1'
+    Location: 'West Europe'
+    ParameterFile: 'tst.parameters'
+    InstallTestContent: true
