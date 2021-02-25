@@ -12,7 +12,7 @@ steps:
   displayName: Create ServicePlan
   inputs:
     deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'Free Trial(4f8a172d-4607-4dbb-b7d7-427f169b13a1)'
+    azureResourceManagerConnection: 'RMS connection'
     subscriptionId: '4f8a172d-4607-4dbb-b7d7-427f169b13a1'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'test'
@@ -26,7 +26,7 @@ steps:
   displayName: Create WebApps
   inputs:
     deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'Free Trial(4f8a172d-4607-4dbb-b7d7-427f169b13a1)'
+    azureResourceManagerConnection: 'RMS connection'
     subscriptionId: '4f8a172d-4607-4dbb-b7d7-427f169b13a1'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'test'
@@ -40,7 +40,7 @@ steps:
   displayName: Create WebApps Slot
   inputs:
     deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'Free Trial(4f8a172d-4607-4dbb-b7d7-427f169b13a1)'
+    azureResourceManagerConnection: 'RMS connection'
     subscriptionId: '4f8a172d-4607-4dbb-b7d7-427f169b13a1'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'test'
