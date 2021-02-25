@@ -5,7 +5,7 @@ trigger:
 - master
 
 variables:
-  armpath: $(Pipeline.Workspace)
+  armpath: $(System.DefaultWorkingDirectory)
 
 stages:
 
