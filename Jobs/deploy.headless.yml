@@ -6,10 +6,29 @@ parameters:
   ParameterFile:
 
 steps:
-- template: ../Tasks/deploy.headless.yml
+- template: $(Build.SourcesDirectory)/Tasks/deploy.arm.yml
   parameters:
     ResourceGroupName: ${{ parameters.ResourceGroupName }}
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
     SubscriptionId: ${{ parameters.SubscriptionId }}
     Location: ${{ parameters.Location }}
+    Template: $(Build.SourcesDirectory)\servicePlan.json
+    ParameterFile: ${{ parameters.ParameterFile }}
+
+- template: $(Build.SourcesDirectory)/Tasks/deploy.arm.yml
+  parameters:
+    ResourceGroupName: ${{ parameters.ResourceGroupName }}
+    AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
+    SubscriptionId: ${{ parameters.SubscriptionId }}
+    Location: ${{ parameters.Location }}
+    Template: $(Build.SourcesDirectory)\webApps.json
+    ParameterFile: ${{ parameters.ParameterFile }}
+
+- template: $(Build.SourcesDirectory)/Tasks/deploy.arm.yml
+  parameters:
+    ResourceGroupName: ${{ parameters.ResourceGroupName }}
+    AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
+    SubscriptionId: ${{ parameters.SubscriptionId }}
+    Location: ${{ parameters.Location }}
+    Template: $(Build.SourcesDirectory)\slots.json
     ParameterFile: ${{ parameters.ParameterFile }}

@@ -2,14 +2,11 @@
 name: Pipeline for Headless01
 
 trigger:
-- master
-
-variables:
-  armpath: '$(Pipeline.Workspace)'
+- none
 
 stages:
 
 # INT
 - stage: TST_Deploy
   jobs:
-  - template: stages/Deploy.TST.yml
+  - template: $(Build.SourcesDirectory)/stages/Deploy.TST.yml

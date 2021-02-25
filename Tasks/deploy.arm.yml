@@ -1,0 +1,22 @@
+parameters:
+    ResourceGroupName:
+    AzureServiceConnection: 
+    SubscriptionId: 
+    Location:
+    Template:
+    ParameterFile:
+
+steps:    
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Create ServicePlans
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: ${{ parameters.AzureServiceConnection }}
+    subscriptionId: ${{ parameters.SubscriptionId }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: ${{ parameters.ResourceGroupName }}
+    location: ${{ parameters.Location }}
+    templateLocation: 'Linked artifact'
+    csmFile: ${{ parameters.Template }}
+    csmParametersFile: ${{ parameters.ParameterFile }}
+    deploymentMode: 'Incremental'
