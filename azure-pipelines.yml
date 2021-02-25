@@ -9,4 +9,4 @@ stages:
 # INT
 - stage: TST_Deploy
   jobs:
-  - template: Stages/Deploy.TST.yml
+  - template: stages/Deploy.TST.yml
