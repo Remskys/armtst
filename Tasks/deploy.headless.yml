@@ -6,10 +6,13 @@ parameters:
     ParameterFile:
 
 steps:    
--task:
-  - script: echo $(armpath)
-  - script: echo ${{ parameters.ParameterFile }}
-
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+              Write-Host $(armpath)
+              write-host ${{ parameters.ParameterFile }}
+              
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: Create ServicePlans
   inputs:
