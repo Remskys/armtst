@@ -16,8 +16,8 @@ steps:
     resourceGroupName: ${{ parameters.ResourceGroupName }}
     location: ${{ parameters.Location }}
     templateLocation: 'Linked artifact'
-    csmFile: '$(Agent.BuildDirectory)/s/servicePlans.json'
-    csmParametersFile: '$(Agent.BuildDirectory)/s/${{ parameters.ParameterFile }}'
+    csmFile: '$(System.DefaultWorkingDirectory)/servicePlans.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/${{ parameters.ParameterFile }}'
     deploymentMode: 'Incremental'
 
 - task: AzureResourceManagerTemplateDeployment@3
@@ -30,8 +30,8 @@ steps:
     resourceGroupName: ${{ parameters.ResourceGroupName }}
     location:  ${{ parameters.Location }}
     templateLocation: ${{ parameters.Location }}
-    csmFile: '$(Agent.BuildDirectory)/s/webApps.json'
-    csmParametersFile: '$(Agent.BuildDirectory)/s/${{ parameters.ParameterFile }}'
+    csmFile: '$(System.DefaultWorkingDirectory)/webApps.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/${{ parameters.ParameterFile }}'
     deploymentMode: 'Incremental'
 
 - task: AzureResourceManagerTemplateDeployment@3
@@ -44,6 +44,6 @@ steps:
     resourceGroupName: ${{ parameters.ResourceGroupName }}
     location:  ${{ parameters.Location }}
     templateLocation: 'Linked artifact'
-    csmFile: '$(Agent.BuildDirectory)/s/slots.json'
-    csmParametersFile: '$(Agent.BuildDirectory)/s/${{ parameters.ParameterFile }}'
+    csmFile: '$(System.DefaultWorkingDirectory)/slots.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/${{ parameters.ParameterFile }}'
     deploymentMode: 'Incremental'
