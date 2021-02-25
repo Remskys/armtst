@@ -21,7 +21,7 @@ steps:
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
     SubscriptionId: ${{ parameters.SubscriptionId }}
     Location: ${{ parameters.Location }}
-    Template: $(Build.SourcesDirectory)/webApps.json
+    Template: $(Build.SourcesDirectory)/Templates/webApps.json
     ParameterFile: ${{ parameters.ParameterFile }}
 
 - template: ../Tasks/deploy.arm.yml
@@ -30,5 +30,5 @@ steps:
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
     SubscriptionId: ${{ parameters.SubscriptionId }}
     Location: ${{ parameters.Location }}
-    Template: $(Build.SourcesDirectory)/slots.json
+    Template: $(Build.SourcesDirectory)/Templates/slots.json
     ParameterFile: ${{ parameters.ParameterFile }}
