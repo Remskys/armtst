@@ -16,8 +16,8 @@ steps:
     resourceGroupName: ${{ parameters.ResourceGroupName }}
     location: ${{ parameters.Location }}
     templateLocation: 'Linked artifact'
-    csmFile: './servicePlans.json'
-    csmParametersFile: './${{ parameters.ParameterFile }}'
+    csmFile: 'servicePlans.json'
+    csmParametersFile: ${{ parameters.ParameterFile }}
     deploymentMode: 'Incremental'
 
 - task: AzureResourceManagerTemplateDeployment@3
