@@ -7,7 +7,7 @@ parameters:
 
 steps:    
 - task: AzureResourceManagerTemplateDeployment@3
-  displayName: Create ServicePlan
+  displayName: Create ServicePlans
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: ${{ parameters.AzureServiceConnection }}
@@ -16,8 +16,8 @@ steps:
     resourceGroupName: ${{ parameters.ResourceGroupName }}
     location: ${{ parameters.Location }}
     templateLocation: 'Linked artifact'
-    csmFile: '$(System.DefaultWorkingDirectory)/servicePlans.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/${{ parameters.ParameterFile }}'
+    csmFile: './servicePlans.json'
+    csmParametersFile: './${{ parameters.ParameterFile }}'
     deploymentMode: 'Incremental'
 
 - task: AzureResourceManagerTemplateDeployment@3
@@ -35,7 +35,7 @@ steps:
     deploymentMode: 'Incremental'
 
 - task: AzureResourceManagerTemplateDeployment@3
-  displayName: Create WebApps Slot
+  displayName: Create Slots
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: ${{ parameters.AzureServiceConnection }}
