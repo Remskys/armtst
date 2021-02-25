@@ -12,7 +12,7 @@ steps:
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
     SubscriptionId: ${{ parameters.SubscriptionId }}
     Location: ${{ parameters.Location }}
-    Template: $(Build.SourcesDirectory)/servicePlan.json
+    Template: $(Build.SourcesDirectory)/servicePlans.json
     ParameterFile: ${{ parameters.ParameterFile }}
 
 - template: ../Tasks/deploy.arm.yml
