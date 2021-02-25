@@ -1,5 +1,5 @@
 
-name: Pipeline for Headless01
+name: Pipeline for Headless
 
 trigger:
 - none
@@ -9,4 +9,4 @@ stages:
 # INT
 - stage: TST_Deploy
   jobs:
-  - template: $(Build.SourcesDirectory)/stages/Deploy.TST.yml
+  - template: stages/Deploy.TST.yml
