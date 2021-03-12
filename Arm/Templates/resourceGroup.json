@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+
+    "parameters": {
+        "Resources": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "shared": "[parameters('Resources').shared]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "name": "[variables('shared').resourceGroup.name]",
+            "location": "[variables('shared').location.name]",
+            "properties": {}
+        }
+    ]
+}
