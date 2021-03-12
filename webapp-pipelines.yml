@@ -2,9 +2,12 @@
 trigger:
 - none
 
+variables:
+  system.debug: true 
+  
 stages:
 
-# INT
+# TST
 - stage: TST_Deploy
   jobs:
   - template: Stage/Deploy.TST.yml
