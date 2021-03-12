@@ -5,17 +5,7 @@ parameters:
   Location:
   ParameterFile:
 
-steps:
-- template: ../Tasks/deploy.arm.yml
-  parameters:
-    displayName: 'Deploy Resource Group'
-    ResourceGroupName: ${{ parameters.ResourceGroupName }}
-    AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
-    SubscriptionId: ${{ parameters.SubscriptionId }}
-    Location: ${{ parameters.Location }}
-    Template: $(Build.SourcesDirectory)/Templates/resourceGroup.json
-    ParameterFile: ${{ parameters.ParameterFile }}
-    
+steps:    
 - template: ../Tasks/deploy.arm.yml
   parameters:
     displayName: 'Deploy Service Plans'
