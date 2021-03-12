@@ -9,7 +9,6 @@ parameters:
 steps:    
 
 - task: AzureResourceManagerTemplateDeployment@3
-  displayName: Deploy ${{ parameters.Template }}
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: ${{ parameters.AzureServiceConnection }}
