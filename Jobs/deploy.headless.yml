@@ -8,7 +8,7 @@ parameters:
 steps:
 - template: ../Tasks/deploy.arm.yml
   parameters:
-    displayName: 'Deploy Service Plans'
+    displayName: 'Deploy Resource Group'
     ResourceGroupName: ${{ parameters.ResourceGroupName }}
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
     SubscriptionId: ${{ parameters.SubscriptionId }}
