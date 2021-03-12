@@ -1,6 +1,4 @@
 
-name: Pipeline for Headless
-
 trigger:
 - none
 
