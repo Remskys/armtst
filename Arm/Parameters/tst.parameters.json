@@ -29,14 +29,14 @@
                         {
                             "name": "apptst01",
                             "plan": "srvplan01",
-                            "slot": "prod"
+                            "slot": "production"
                         }
                     ],
                     "webSlots": [
                         {
                             "name": "apptst01",
                             "plan": "srvplan01",
-                            "slot": "qa"
+                            "slot": "stage"
                         }
                     ]
                 }
