@@ -8,7 +8,7 @@ parameters:
 steps:    
 - template: ../Tasks/deploy.arm.yml
   parameters:
-    displayName: 'Deploy Service Plans'
+    DisplayName: 'Deploy Service Plans'
     ResourceGroupName: ${{ parameters.ResourceGroupName }}
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
     SubscriptionId: ${{ parameters.SubscriptionId }}
@@ -18,7 +18,7 @@ steps:
 
 - template: ../Tasks/deploy.arm.yml
   parameters:
-    displayName: 'Deploy WebApps'
+    DisplayName: 'Deploy WebApps'
     ResourceGroupName: ${{ parameters.ResourceGroupName }}
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
     SubscriptionId: ${{ parameters.SubscriptionId }}
@@ -28,7 +28,7 @@ steps:
 
 - template: ../Tasks/deploy.arm.yml
   parameters:
-    displayName: 'Deploy Slots'
+    DisplayName: 'Deploy Slots'
     ResourceGroupName: ${{ parameters.ResourceGroupName }}
     AzureServiceConnection: ${{ parameters.AzureServiceConnection }}
     SubscriptionId: ${{ parameters.SubscriptionId }}
